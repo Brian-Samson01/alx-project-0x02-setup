@@ -7,6 +7,7 @@ const Header = () => {
         <h1 className="text-xl font-bold">ALX Project</h1>
         <ul className="flex gap-4">
           <li><Link href="/">Home</Link></li>
+          <li><Link href="/home">Go to Home Page</Link></li>
           <li><Link href="/about">About</Link></li>
         </ul>
       </nav>
