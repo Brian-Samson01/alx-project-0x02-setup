@@ -1,13 +1,34 @@
-import Header from "../components/layout/Header";
+"use client";
+
+import Button from "../components/common/Button";
 
 export default function AboutPage() {
   return (
-    <>
-      <Header />
-      <main className="container mx-auto p-6">
-        <h1 className="text-3xl font-bold">About Page</h1>
-        <p className="mt-4">This page gives information about the project.</p>
-      </main>
-    </>
+    <div className="p-8">
+      <h1 className="text-2xl font-bold mb-6">About Page</h1>
+
+      <div className="space-x-4">
+        {/* Small rounded-sm button */}
+        <Button
+          label="Small Button"
+          size="small"
+          shape="rounded-sm"
+        />
+
+        {/* Medium rounded-md button */}
+        <Button
+          label="Medium Button"
+          size="medium"
+          shape="rounded-md"
+        />
+
+        {/* Large rounded-full button */}
+        <Button
+          label="Large Button"
+          size="large"
+          shape="rounded-full"
+        />
+      </div>
+    </div>
   );
 }
