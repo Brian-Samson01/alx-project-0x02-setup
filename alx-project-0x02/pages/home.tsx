@@ -1,28 +1,46 @@
-import Header from "../components/layout/Header";
-import Card from "../components/common/Card";
+"use client";
+import { useState } from "react";
+import PostModal from "../components/common/PostModal";
 
 export default function HomePage() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [posts, setPosts] = useState<
+    { title: string; content: string }[]
+  >([]);
+
+  const handleAddPost = (data: { title: string; content: string }) => {
+    setPosts((prev) => [...prev, data]);
+  };
+
   return (
-    <>
-      <Header />
-      <main className="container mx-auto p-6 space-y-6">
-        <h1 className="text-3xl font-bold">Home Page</h1>
+    <div className="p-6">
+      <h1 className="text-2xl font-bold mb-4">Home Page</h1>
 
-        <Card 
-          title="First Card"
-          content="This is the first reusable card component."
-        />
+      <button
+        onClick={() => setIsModalOpen(true)}
+        className="px-4 py-2 bg-green-600 text-white rounded"
+      >
+        Add New Post
+      </button>
 
-        <Card 
-          title="Second Card"
-          content="Here is another example of the card with different text."
-        />
+      {/* Modal */}
+      <PostModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onSubmit={handleAddPost}
+      />
 
-        <Card 
-          title="Third Card"
-          content="You can keep reusing this component with any content you want."
-        />
-      </main>
-    </>
+      {/* Display posts */}
+      <div className="mt-6 space-y-4">
+        {posts.length === 0 && <p className="text-gray-500">No posts yet.</p>}
+
+        {posts.map((post, index) => (
+          <div key={index} className="border p-4 rounded shadow">
+            <h2 className="text-lg font-bold">{post.title}</h2>
+            <p className="mt-2">{post.content}</p>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
