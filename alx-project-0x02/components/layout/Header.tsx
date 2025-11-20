@@ -1,18 +1,25 @@
+"use client";
+
 import Link from "next/link";
 
-const Header = () => {
+export default function Header() {
   return (
-    <header className="bg-blue-600 text-white p-4 shadow-md">
-      <nav className="container mx-auto flex justify-between">
-        <h1 className="text-xl font-bold">ALX Project</h1>
-        <ul className="flex gap-4">
-          <li><Link href="/">Home</Link></li>
-          <li><Link href="/home">Go to Home Page</Link></li>
-          <li><Link href="/about">About</Link></li>
-        </ul>
+    <header className="bg-gray-900 text-white px-6 py-4 flex items-center justify-between">
+      <h1 className="text-xl font-bold">My Website</h1>
+
+      <nav className="space-x-6">
+        <Link href="/home" className="hover:text-blue-400">
+          Home
+        </Link>
+
+        <Link href="/about" className="hover:text-blue-400">
+          About
+        </Link>
+
+        <Link href="/posts" className="hover:text-blue-400">
+          Posts
+        </Link>
       </nav>
     </header>
   );
-};
-
-export default Header;
+}
